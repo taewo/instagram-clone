@@ -1,13 +1,28 @@
 #1.0 Setting up the project
 
-$ yarn add graphql
-$ yarn add nodemon babel-cli -D
-nodemon.json 작성
-package.json `scripts` 작성
+- $ yarn add graphql
+- $ yarn add nodemon babel-cli -D
+- nodemon.json 작성
+- package.json `scripts` 작성
 
 
 #1.1 Creating Graphql server
 
-import문법이 인식을 못해서 @babel/core 적용, babelrc 생성
-dotenv 설치
-graphql-yoga를 통해 graphql 서버 생성
+- import문법이 인식을 못해서 @babel/core 적용, babelrc 생성
+- dotenv 설치
+- graphql-yoga를 통해 graphql 서버 생성
+
+
+#1.2 Setting up the Server like the pros
+
+- morgan설치해서 서버 로그 쌓자. Graphql server는 express기반이라 
+    const server = new GraphQLServer({})
+    server.express.use(logger('dev')) 이런 식으로 모듈 적용
+- 이모지 축약키는 ctr + command + space
+- 만들어질 API에 대한 모듬 폴더를 만들고 해당 resolver나 type들을 일괄적으로 처리하는 방식
+    src/api/Hello폴더에 resolver를 담는 .js파일과 type을 담는 .graphql파일을 생성
+    예를들어 src/api/Hello/sayHello.js src/api/Hello/sayHello.graphql만든다
+    resolver와 Query type을 한번에 머지해서 쓸 수 있는 모듈 설치
+        $ yarn add graphql-tools merge-graphql-schemas
+
+        
